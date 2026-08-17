@@ -44,11 +44,11 @@ This dataset satisfies the assignment minimum of 500 instances and 12 features.
 
 ## c. GitHub Repository Link
 
-`<ADD_YOUR_GITHUB_REPOSITORY_LINK_HERE>`
+`https://github.com/UdayanBasu/ML-Assignment-2-BITS`
 
 ## Live Streamlit App Link
 
-`<ADD_YOUR_STREAMLIT_APP_LINK_HERE>`
+`https://ml-assignment-2-bits-nnbyugcnn7mz9aacj27caa.streamlit.app/`
 
 ## d. Models Used
 
