@@ -1,0 +1,12 @@
+DATASET USED
+UCI Online Shoppers Purchasing Intention Dataset
+
+Instance size: 12,330
+Feature size: 17
+Target: Revenue
+Problem type: Binary classification
+
+Only one CSV is included:
+test_data.csv
+
+The complete training dataset is fetched from UCI through ucimlrepo when the project runs.
