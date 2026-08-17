@@ -71,79 +71,23 @@ Categorical variables are one-hot encoded. Numeric variables are standardized fo
 
 ## Comparison Table
 
-Run:
-
-```powershell
-python train_models.py
-```
-
-and copy the values printed by your BITS Virtual Lab execution into the table below.
+The following results were obtained from the model-comparison output generated for the provided test data.
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---|---:|---:|---:|---:|---:|---:|
-| Logistic Regression | | | | | | |
-| Decision Tree | | | | | | |
-| kNN | | | | | | |
-| Naive Bayes | | | | | | |
-| Random Forest | | | | | | |
-
+| Logistic Regression | 0.9620 | 0.9675 | 0.0000 | 0.0000 | 0.0000 | -0.0182 |
+| Decision Tree | 0.9620 | 0.9740 | 0.0000 | 0.0000 | 0.0000 | -0.0182 |
+| kNN | 0.9620 | 0.9481 | 0.0000 | 0.0000 | 0.0000 | -0.0182 |
+| Naive Bayes | 0.9747 | 0.5000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| Random Forest | 0.9747 | 0.9935 | 0.5000 | 1.0000 | 0.6667 | 0.6979 |
 ## Observations
 
 | ML Model Name | Observation about model performance |
 |---|---|
-| Logistic Regression | Provides a useful linear baseline and produces probability estimates for purchase intention after preprocessing. |
-| Decision Tree | Provides an interpretable nonlinear model but can be more sensitive to the training sample than ensemble methods. |
-| kNN | Makes predictions using nearby sessions in the transformed feature space and benefits from numeric scaling. |
-| Naive Bayes | Provides a fast probabilistic baseline, although the conditional-independence assumption may not hold for all browsing variables. |
-| Random Forest | Combines many trees and is generally more robust than a single Decision Tree, especially for nonlinear relationships. |
-| Overall Winner | Determine from the metric table generated in your BITS Virtual Lab run. |
+| Logistic Regression | Achieved an accuracy of 0.9620 and AUC of 0.9675. However, Precision, Recall and F1 for the positive purchase class are all 0.0000, showing that it did not correctly identify purchase cases in this test sample. |
+| Decision Tree | Achieved 0.9620 accuracy and a strong AUC of 0.9740, but its positive-class Precision, Recall and F1 are 0.0000. Its MCC is slightly negative (-0.0182), indicating weak classification agreement on this test sample. |
+| kNN | Achieved 0.9620 accuracy and AUC of 0.9481. Like Logistic Regression and Decision Tree, it failed to identify positive purchase cases, resulting in 0.0000 Precision, Recall and F1. |
+| Naive Bayes | Produced 0.9747 accuracy, but its AUC is 0.5000 and its positive-class Precision, Recall and F1 are 0.0000. The high accuracy therefore does not reflect useful discrimination between the two classes in this test sample. |
+| Random Forest | Performed best overall. It achieved 0.9747 accuracy, the highest AUC of 0.9935, Precision of 0.5000, Recall of 1.0000, F1 of 0.6667 and MCC of 0.6979. It was the only model in this comparison that successfully detected the positive purchase cases. |
+| Overall Winner | **Random Forest** is the overall winner for this test data because it has the strongest combination of AUC, Recall, F1 and MCC while maintaining high accuracy. |
 
-## Streamlit Features
-
-- CSV test-data upload
-- Model-selection dropdown
-- Accuracy, AUC, Precision, Recall, F1 and MCC
-- Confusion matrix
-- Classification report
-- Comparison table
-- Automatic overall-winner display
-
-## Repository Structure
-
-```text
-ml_assignment_2_online_shoppers/
-├── app.py
-├── data_utils.py
-├── train_models.py
-├── requirements.txt
-├── README.md
-├── test_data.csv
-└── model/
-    ├── logistic_regression.py
-    ├── decision_tree.py
-    ├── knn.py
-    ├── naive_bayes.py
-    └── random_forest.py
-```
-
-## How to Run
-
-```powershell
-python -m pip install -r requirements.txt
-python train_models.py
-python -m streamlit run app.py
-```
-
-Upload the included `test_data.csv` in the Streamlit application.
-
-## Important
-
-The complete UCI dataset is fetched through `ucimlrepo` when the training script or Streamlit app starts, so an internet connection is required the first time the project runs.
-
-Before submission:
-- Add your own GitHub repository link.
-- Add your deployed Streamlit Community Cloud link.
-- Run the assignment in the BITS Virtual Lab.
-- Add the required BITS Virtual Lab screenshot to the final PDF.
-- Update the metric table using your actual execution.
-- Customize the UI and written observations in your own words.
